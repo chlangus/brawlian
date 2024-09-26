@@ -1,28 +1,37 @@
-"use client";
-
+import { usePlayerContext } from "@/context/context";
 import { useState } from "react";
-// #9g9cpcglu
 export default function SearchId() {
-  const [idValue, setIdValue] = useState<string>("");
+  const { setPlayerData } = usePlayerContext();
+  const [idValue, setIdValue] = useState<string>("#");
 
   const handleSearchIdButton = async () => {
-    const response = await fetch("api/search");
+    const response = await fetch("api/search", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: idValue }),
+    });
     const data = await response.json();
-    console.log(data);
+    if (data.reason) {
+      alert("존재하지 않는 유저입니다.");
+    } else {
+      setPlayerData(data);
+    }
   };
   return (
-    <div>
-      <label htmlFor="search">전적 검색</label>
+    <div className="flex gap-[17px]">
       <input
         id="search"
         type="text"
         onChange={({ target }) => setIdValue(target.value)}
         value={idValue}
-        className="text-black"
+        className="text-black placeholder:text-gray-600 py-3 px-6 rounded-2xl shadow-lg w-[270px]"
+        placeholder="사용자 tag 검색"
       />
       <button
         type="button"
-        className="bg-blue-600"
+        className="bg-[#ff0000] font-semibold px-6 p-3 rounded-2xl shadow-lg flex hover:scale-110 duration-75"
         onClick={handleSearchIdButton}
       >
         검색

@@ -7,22 +7,27 @@
   src: url("./fonts/Acme-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "monomanic";
+  src: url("./fonts/MonomaniacOne-Regular.ttf") format("truetype");
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: blue;
+  --foreground: white;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: blue;
+    --foreground: white;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "acme", Arial, Helvetica, sans-serif, acme;
+  font-family: "monomanic", Arial, Helvetica, sans-serif, acme;
 }
 
 @layer utilities {
