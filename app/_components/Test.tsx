@@ -1,16 +1,16 @@
-import { env } from "process";
+// import { env } from "process";
 
-export default async function Test() {
-  const data = await fetch(`${env.SUB_API_URL}/events`);
-  const posts = await data.json();
-  return posts.active.map((post) => (
-    <ul key={post.slot.id}>
-      <li>맵 종류: {post.slot.name}</li>
-      <li>맵 이름: {post.map.name}</li>
-      <br />
-    </ul>
-  ));
-}
+// export default async function Test() {
+//   const data = await fetch(`${env.SUB_API_URL}/events`);
+//   const posts = await data.json();
+//   return posts.active.map((post) => (
+//     <ul key={post.slot.id}>
+//       <li>맵 종류: {post.slot.name}</li>
+//       <li>맵 이름: {post.map.name}</li>
+//       <br />
+//     </ul>
+//   ));
+// }
 
 // slot: {
 //     id: 15,
