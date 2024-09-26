@@ -1,7 +1,7 @@
-import { usePlayerContext } from "@/context/context";
+import { usePlayerInfoContext } from "@/context/PlayterInfoContext";
 import { useState } from "react";
 export default function SearchId() {
-  const { setPlayerData } = usePlayerContext();
+  const { setPlayerData } = usePlayerInfoContext();
   const [idValue, setIdValue] = useState<string>("#");
 
   const handleSearchIdButton = async () => {
@@ -12,11 +12,11 @@ export default function SearchId() {
       },
       body: JSON.stringify({ id: idValue }),
     });
-    const data = await response.json();
-    if (data.reason) {
+    const { playerInfoJson, playerLogJson } = await response.json();
+    if (playerInfoJson.reason) {
       alert("존재하지 않는 유저입니다.");
     } else {
-      setPlayerData(data);
+      setPlayerData(playerInfoJson);
     }
   };
   return (

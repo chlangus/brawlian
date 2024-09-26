@@ -11,6 +11,7 @@ import { PlayerData } from "@/type/player";
 const initialPlayerData: PlayerData = {
   tag: "",
   name: "",
+  nameColor: "",
   icon: {
     id: 0,
   },
@@ -35,7 +36,11 @@ const PlayerContext = createContext<{
   setPlayerData: React.Dispatch<SetStateAction<PlayerData>>;
 }>({ playerData: initialPlayerData, setPlayerData: () => {} });
 
-export const Provider = ({ children }: { children: React.ReactNode }) => {
+export const PlayerInfoProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [playerData, setPlayerData] = useState<PlayerData>(initialPlayerData);
 
   return (
@@ -45,6 +50,6 @@ export const Provider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const usePlayerContext = () => {
+export const usePlayerInfoContext = () => {
   return useContext(PlayerContext);
 };

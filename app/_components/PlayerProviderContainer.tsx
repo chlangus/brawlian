@@ -1,15 +1,15 @@
 "use client";
-import { Provider } from "@/context/context";
+import { PlayerInfoProvider } from "@/context/PlayterInfoContext";
 import PlayerInfo from "./PlayerInfo";
 import SearchId from "./SearchId";
 
-export default function MainWrapper() {
+export default function PlayerProviderContainer() {
   return (
-    <Provider>
+    <PlayerInfoProvider>
       <section>
         <SearchId />
       </section>
       <PlayerInfo />
-    </Provider>
+    </PlayerInfoProvider>
   );
 }
