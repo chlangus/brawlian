@@ -1,4 +1,3 @@
-// Brawler 관련 타입
 interface Gadget {
   id: number;
   name: string;
@@ -26,13 +25,11 @@ interface Brawler {
   starPowers: StarPower[];
 }
 
-// Club 관련 타입
 interface Club {
   name: string;
   tag: string;
 }
 
-// 전체 데이터 타입 정의
 export interface PlayerData {
   tag: string;
   name: string;
