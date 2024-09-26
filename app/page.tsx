@@ -1,13 +1,10 @@
-// https://api.brawlify.com/v1/events
-
-import SearchId from "./_components/SearchId";
-import Test from "./_components/Test";
+import MainWrapper from "./_components/MainWrapper";
 
 export default function Home() {
   return (
-    <section className="max-w-[1200px] flex flex-col items-center">
-      <SearchId />
-      <Test />
+    <section className="max-w-[1200px] flex flex-col items-center m-auto">
+      <h2 className="text-[96px] mt-[calc(100vh-90vh)]">Brawllian</h2>
+     <MainWrapper/>
     </section>
   );
 }
