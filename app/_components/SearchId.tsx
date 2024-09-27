@@ -1,7 +1,8 @@
-import { usePlayerInfoContext } from "@/context/PlayterInfoContext";
+import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useState } from "react";
+
 export default function SearchId() {
-  const { setPlayerData } = usePlayerInfoContext();
+  const { setPlayerData, setBattleData } = usePlayerInfoContext();
   const [idValue, setIdValue] = useState<string>("");
 
   const handleSearchIdButton = async () => {
@@ -12,13 +13,16 @@ export default function SearchId() {
       },
       body: JSON.stringify({ id: idValue }),
     });
-    const { playerInfoJson, playerLogJson } = await response.json();
+
+    const { playerInfoJson, battleLogJson } = await response.json();
     if (playerInfoJson.reason) {
       alert("존재하지 않는 유저입니다.");
     } else {
       setPlayerData(playerInfoJson);
+      setBattleData(battleLogJson.items);
     }
   };
+
   return (
     <div className="flex gap-[17px]">
       <input
@@ -31,7 +35,7 @@ export default function SearchId() {
       />
       <button
         type="button"
-        className="bg-[#ff0000] font-semibold px-6 p-3 rounded-2xl shadow-lg flex hover:scale-110 duration-75"
+        className="bg-brawl-red font-semibold px-6 p-3 rounded-2xl shadow-lg flex hover:scale-110 duration-75"
         onClick={handleSearchIdButton}
       >
         검색

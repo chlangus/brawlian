@@ -11,6 +11,10 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "brawl-blue": "rgb(0,0,255)",
+        "brawl-pale-blue": "rgb(59,130,246)",
+        "brawl-yellow": "#FDE400",
+        "brawl-red": "#ff0000",
       },
     },
   },

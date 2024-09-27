@@ -1,9 +1,3 @@
-interface BattleEvent {
-  id: number;
-  mode: string;
-  map: string;
-}
-
 interface Brawler {
   id: number;
   name: string;
@@ -17,15 +11,23 @@ interface Player {
   brawler: Brawler;
 }
 
+interface Event {
+  id: number;
+  mode: string;
+  map: string;
+  imageUrl: string;
+}
+
 interface Battle {
   mode: string;
   type: string;
   trophyChange: number;
+  teams: Player[][];
   players: Player[];
 }
 
-interface BattleData {
+export interface BattleData {
   battleTime: string;
-  event: BattleEvent;
+  event: Event;
   battle: Battle;
 }

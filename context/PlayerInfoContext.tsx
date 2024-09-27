@@ -2,11 +2,13 @@
 
 import React, {
   createContext,
+  Dispatch,
   SetStateAction,
   useContext,
   useState,
 } from "react";
 import { PlayerData } from "@/type/player";
+import { BattleData } from "@/type/battle";
 
 const initialPlayerData: PlayerData = {
   tag: "",
@@ -14,6 +16,7 @@ const initialPlayerData: PlayerData = {
   nameColor: "",
   icon: {
     id: 0,
+    iconImage: "",
   },
   trophies: 0,
   highestTrophies: 0,
@@ -31,10 +34,18 @@ const initialPlayerData: PlayerData = {
     tag: "",
   },
 };
+
 const PlayerContext = createContext<{
   playerData: PlayerData;
-  setPlayerData: React.Dispatch<SetStateAction<PlayerData>>;
-}>({ playerData: initialPlayerData, setPlayerData: () => {} });
+  setPlayerData: Dispatch<SetStateAction<PlayerData>>;
+  BattleData: BattleData[];
+  setBattleData: Dispatch<SetStateAction<BattleData[]>>;
+}>({
+  playerData: initialPlayerData,
+  setPlayerData: () => {},
+  BattleData: [],
+  setBattleData: () => {},
+});
 
 export const PlayerInfoProvider = ({
   children,
@@ -42,9 +53,12 @@ export const PlayerInfoProvider = ({
   children: React.ReactNode;
 }) => {
   const [playerData, setPlayerData] = useState<PlayerData>(initialPlayerData);
+  const [BattleData, setBattleData] = useState<BattleData[]>([]);
 
   return (
-    <PlayerContext.Provider value={{ playerData, setPlayerData }}>
+    <PlayerContext.Provider
+      value={{ playerData, setPlayerData, BattleData, setBattleData }}
+    >
       {children}
     </PlayerContext.Provider>
   );

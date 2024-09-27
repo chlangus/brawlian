@@ -1,4 +1,4 @@
-import { usePlayerInfoContext } from "@/context/PlayterInfoContext";
+import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import Image from "next/image";
 
 export default function PlayerInfo() {
@@ -6,13 +6,13 @@ export default function PlayerInfo() {
   return (
     <section className="w-full mt-[30px]">
       {playerData.tag && (
-        <div className="relative bg-blue-500 w-full max-w-[600px] m-auto py-4 px-8 rounded-lg shadow-xl">
+        <div className="relative bg-brawl-pale-blue w-full max-w-[600px] m-auto py-4 px-8 rounded-lg shadow-xl">
           <div className="flex gap-4 justify-between text-center">
             <h2 className="absolute font-bold text-2xl -top-5 left-9">
               프로필
             </h2>
-            <div className="flex gap-4">
-              <div className="mt-2">
+            <div className="flex gap-4 flex-shrink-0">
+              <div className="mt-2 ">
                 <Image
                   src={playerData.icon.iconImage}
                   alt="player-tag-image"
@@ -22,7 +22,7 @@ export default function PlayerInfo() {
 
                 <p className="text-gray-200">{playerData.tag}</p>
               </div>
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-6 flex-shrink-0">
                 <div>
                   <p className="text-xl font-bold">닉네임</p>
                   <p
@@ -39,7 +39,7 @@ export default function PlayerInfo() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 flex-shrink-0">
               <p className="font-bold text-xl">트로피</p>
               <div>
                 <p>현재</p>
@@ -50,7 +50,7 @@ export default function PlayerInfo() {
                 <p>{playerData.highestTrophies}</p>
               </div>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 flex-shrink-0">
               <div>
                 <p className="font-bold text-xl">3vs3 승리</p>
                 <p>{playerData["3vs3Victories"]}</p>
