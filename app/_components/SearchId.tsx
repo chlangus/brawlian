@@ -2,7 +2,7 @@ import { usePlayerInfoContext } from "@/context/PlayterInfoContext";
 import { useState } from "react";
 export default function SearchId() {
   const { setPlayerData } = usePlayerInfoContext();
-  const [idValue, setIdValue] = useState<string>("#");
+  const [idValue, setIdValue] = useState<string>("");
 
   const handleSearchIdButton = async () => {
     const response = await fetch("api/search", {
@@ -26,7 +26,7 @@ export default function SearchId() {
         type="text"
         onChange={({ target }) => setIdValue(target.value)}
         value={idValue}
-        className="text-black placeholder:text-gray-600 py-3 px-6 rounded-2xl shadow-lg w-[270px]"
+        className="text-black text-xl placeholder:text-gray-600 py-3 px-6 rounded-2xl shadow-lg w-[300px]"
         placeholder="사용자 tag 검색"
       />
       <button

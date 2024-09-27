@@ -36,6 +36,7 @@ export interface PlayerData {
   nameColor: string;
   icon: {
     id: number;
+    iconImage: string;
   };
   trophies: number;
   highestTrophies: number;

@@ -8,14 +8,13 @@ export default function PlayerInfo() {
       {playerData.tag && (
         <div className="relative bg-blue-500 w-full max-w-[600px] m-auto py-4 px-8 rounded-lg shadow-xl">
           <div className="flex gap-4 justify-between text-center">
-            <h2 className="absolute font-bold text-2xl -top-5 left-3">
+            <h2 className="absolute font-bold text-2xl -top-5 left-9">
               프로필
             </h2>
             <div className="flex gap-4">
               <div className="mt-2">
-                {/* 이미지 연결해줘야함 */}
                 <Image
-                  src="https://cdn-old.brawlify.com/profile/28000000.png?v=1"
+                  src={playerData.icon.iconImage}
                   alt="player-tag-image"
                   width={80}
                   height={80}

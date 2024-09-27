@@ -6,9 +6,7 @@ import SearchId from "./SearchId";
 export default function PlayerProviderContainer() {
   return (
     <PlayerInfoProvider>
-      <section>
-        <SearchId />
-      </section>
+      <SearchId />
       <PlayerInfo />
     </PlayerInfoProvider>
   );

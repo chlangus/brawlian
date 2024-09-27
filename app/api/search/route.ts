@@ -26,5 +26,9 @@ export async function POST(req: NextRequest) {
     playerInfo.json(),
     playerLog.json(),
   ]);
+  const playerIcon = await fetch(`${env.SUB_API_URL}/icons`);
+  const playerIconJson = await playerIcon.json();
+  const iconImage = playerIconJson.player[playerInfoJson.icon.id].imageUrl;
+  playerInfoJson.icon = {...playerInfoJson.icon, iconImage}
   return NextResponse.json({ playerInfoJson, playerLogJson });
 }
