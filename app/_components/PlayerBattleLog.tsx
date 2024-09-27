@@ -4,8 +4,8 @@ import Image from "next/image";
 
 export default function PlayerBattleLog() {
   const { BattleData } = usePlayerInfoContext();
-  return (
-    <div className="grid grid-cols-2 gap-4 mt-10 bg-blue-300 p-4 rounded-lg">
+  return BattleData.length ? (
+    <div className="grid grid-cols-2 gap-4 mt-10 bg-blue-300 p-4 rounded-lg max-w-[900px]">
       {BattleData?.map((battle) => (
         <div
           key={battle.battleTime}
@@ -42,7 +42,7 @@ export default function PlayerBattleLog() {
                     </span>
                   </div>
                 ))
-              : battle.battle.players.map((player,idx) => (
+              : battle.battle.players.map((player, idx) => (
                   <div key={player.tag} className="flex">
                     <p>{player.name}</p>
                     <span
@@ -58,5 +58,7 @@ export default function PlayerBattleLog() {
         </div>
       ))}
     </div>
+  ) : (
+    ""
   );
 }

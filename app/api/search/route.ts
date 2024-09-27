@@ -1,5 +1,3 @@
-import { BattleData } from "@/type/battle";
-import { PlayerData } from "@/type/player";
 import { NextRequest, NextResponse } from "next/server";
 import { env } from "process";
 // 브라우저에서 api 요청시 cors에러
