@@ -4,12 +4,12 @@
 
 @font-face {
   font-family: "acme";
-  src: url("./fonts/Acme-Regular.ttf") format("truetype");
+  src: url("../lib/fonts/Acme-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "monomanic";
-  src: url("./fonts/MonomaniacOne-Regular.ttf") format("truetype");
+  src: url("../lib/fonts/MonomaniacOne-Regular.ttf") format("truetype");
 }
 
 :root {

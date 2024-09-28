@@ -1,4 +1,4 @@
-import PlayerProviderContainer from "./_components/PlayerProviderContainer";
+import PlayerProviderContainer from "../components/PlayerProviderContainer";
 
 export default function Home() {
   return (

@@ -15,6 +15,9 @@ const playerFetch = (id: string, isbattleLog: boolean) => {
   );
 };
 
+type Log = { event: { id: string; imageUrl: string } };
+type Map = { id: string; imageUrl: string };
+
 export async function POST(req: NextRequest) {
   // const tag = "9g9cpcglu";
   const { id } = await req.json();
@@ -39,9 +42,10 @@ export async function POST(req: NextRequest) {
 
     const mapIconJson = await mapIcon.json();
     // 전투기록의 맵의 id와 같은거 찾아서 imageUrl 저장
-    mapIconJson.list.forEach((map) =>
+    mapIconJson.list.forEach((map: Map) =>
       battleLogJson.items.forEach(
-        (log) => log.event.id === map.id && (log.event.imageUrl = map.imageUrl)
+        (log: Log) =>
+          log.event.id === map.id && (log.event.imageUrl = map.imageUrl)
       )
     );
   }
