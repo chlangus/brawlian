@@ -25,16 +25,21 @@ export default function PlayerInfo() {
                   height={80}
                 />
                 <p className="text-gray-200">{playerData.tag}</p>
-                <p>LV. {playerData.expLevel}</p>
               </div>
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-3">
                 <div className="flex flex-col gap-1 flex-shrink-0 items-start">
-                  <p
-                    className="text-xl mt-2"
-                    style={{ color: `#${playerData.nameColor.slice(4)}` }}
-                  >
-                    {playerData.name}
-                  </p>
+                  <div className="flex items-end gap-2">
+                    <p className="text-lg">
+                      LV. {playerData.expLevel}
+                    </p>
+
+                    <p
+                      className="text-xl mt-2"
+                      style={{ color: `#${playerData.nameColor.slice(4)}` }}
+                    >
+                      {playerData.name}
+                    </p>
+                  </div>
                   <p className="flex gap-2 items-center justify-center">
                     <Image src={clubSvg} alt="club-svg" />
                     {playerData.club.name}
