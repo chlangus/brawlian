@@ -38,12 +38,12 @@ const initialPlayerData: PlayerData = {
 const PlayerContext = createContext<{
   playerData: PlayerData;
   setPlayerData: Dispatch<SetStateAction<PlayerData>>;
-  BattleData: BattleData[];
+  battleData: BattleData[];
   setBattleData: Dispatch<SetStateAction<BattleData[]>>;
 }>({
   playerData: initialPlayerData,
   setPlayerData: () => {},
-  BattleData: [],
+  battleData: [],
   setBattleData: () => {},
 });
 
@@ -53,11 +53,11 @@ export const PlayerInfoProvider = ({
   children: React.ReactNode;
 }) => {
   const [playerData, setPlayerData] = useState<PlayerData>(initialPlayerData);
-  const [BattleData, setBattleData] = useState<BattleData[]>([]);
+  const [battleData, setBattleData] = useState<BattleData[]>([]);
 
   return (
     <PlayerContext.Provider
-      value={{ playerData, setPlayerData, BattleData, setBattleData }}
+      value={{ playerData, setPlayerData, battleData, setBattleData }}
     >
       {children}
     </PlayerContext.Provider>
