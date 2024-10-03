@@ -15,8 +15,6 @@ const playerFetch = (id: string, isbattleLog: boolean) => {
   );
 };
 
-type Log = { event: { id: string; imageUrl: string } };
-type Map = { id: string; imageUrl: string };
 
 export async function POST(req: NextRequest) {
   // const tag = "9g9cpcglu";
@@ -30,24 +28,5 @@ export async function POST(req: NextRequest) {
     battleLog.json(),
   ]);
 
-  // reason있으면 없는 유저
-  if (!playerInfoJson.reason) {
-    const [playerIcon, mapIcon] = await Promise.all([
-      fetch(`${env.SUB_API_URL}/icons`),
-      fetch(`${env.SUB_API_URL}/maps`),
-    ]);
-    const IconJson = await playerIcon.json();
-    const iconImage = IconJson.player[playerInfoJson.icon.id].imageUrl;
-    playerInfoJson.icon = { ...playerInfoJson.icon, iconImage };
-
-    const mapIconJson = await mapIcon.json();
-    // 전투기록의 맵의 id와 같은거 찾아서 imageUrl 저장
-    mapIconJson.list.forEach((map: Map) =>
-      battleLogJson.items.forEach(
-        (log: Log) =>
-          log.event.id === map.id && (log.event.imageUrl = map.imageUrl)
-      )
-    );
-  }
   return NextResponse.json({ playerInfoJson, battleLogJson });
 }

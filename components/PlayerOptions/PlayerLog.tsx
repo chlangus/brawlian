@@ -12,17 +12,15 @@ export default function PlayerLog() {
     setTabValue(value);
   };
   // 브롤러 이미지 넣기 => 전역상태로 브롤러id별 이미지 저장
-  // https://api.brawlify.com/v1/brawlers
-  console.log(playerData);
   return battleData.length ? (
-    <div className="mt-20 flex flex-col p-2 bg-brawl-more-pale-blue relative gap-6 rounded-lg drop-shadow-lg">
+    <div className="mt-20 flex flex-col py-2 px-3 bg-brawl-more-pale-blue relative gap-6 rounded-lg drop-shadow-lg  w-[800px]">
       <div className="flex ml-3 absolute -top-10">
         <button
           className={`${
             tabValue === "대전 기록"
               ? "bg-brawl-pale-blue"
               : "bg-brawl-more-pale-blue"
-          } p-2  font-bold text-2xl rounded-t-lg`}
+          } p-2 font-bold text-2xl rounded-t-lg`}
           onClick={() => handleTabClick("대전 기록")}
         >
           대전 기록

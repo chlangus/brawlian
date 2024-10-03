@@ -2,25 +2,19 @@ import { BattleData } from "@/type/battle";
 import { calculateTime } from "@/utils/timeCal";
 import Image from "next/image";
 import trophySvg from "@/lib/svg/trophy.svg";
+import { useBrawlInfoContext } from "@/context/BrawlInfoContext";
 
 export default function BattleLog({
   battleData,
 }: {
   battleData: BattleData[];
 }) {
-  console.log(battleData);
+  const { icon, map, brawlers } = useBrawlInfoContext();
   return battleData?.map((battle) => (
     <div
       key={battle.battleTime}
       className="bg-brawl-pale-blue rounded-lg p-2 shadow-lg flex relative"
     >
-      <h2
-        className={`absolute text-black text-center text-[40px] w-full ${
-          battle.battle.trophyChange > 0 ? "text-[#00C320]" : "text-[#D00000]"
-        }`}
-      >
-        {battle.battle.trophyChange > 0 ? "승리" : "패배"}
-      </h2>
       <div>
         <h2>{calculateTime(battle.battleTime)}</h2>
         <h2 className="flex gap-1">
@@ -29,43 +23,71 @@ export default function BattleLog({
         </h2>
         <h2>{battle.battle.mode}</h2>
         <Image
-          src={battle.event.imageUrl}
+          src={map[battle.event.id]?.imageUrl}
           alt="map-image"
-          width={200}
+          width={150}
           height={200}
+          className="w-[150px] h-[200px]"
         />
       </div>
 
-      <div className="flex">
-        {battle.battle.teams
-          ? battle.battle.teams.map((team, idx) => (
-              <div key={team[0].tag} className="flex gap-2">
-                <div>
-                  {team.map((player) => (
-                    <p key={player.tag}>{player.name}</p>
-                  ))}
+      <div className="flex flex-col">
+        <h2
+          className={`text-center text-[40px] w-full drop-shadow-xl ${
+            battle.battle.trophyChange > 0 ? "text-[#00C320]" : "text-[#D00000]"
+          }`}
+        >
+          {battle.battle.trophyChange > 0 ? "승리" : "패배"}
+        </h2>
+        <div className="flex w-[560px] h-[200px]">
+          {battle.battle.teams ? (
+            <div className="flex gap-2">
+              {battle.battle.teams.map((team) => (
+                <div key={team[0].tag} className="flex gap-2">
+                  <div className="flex">
+                    {team.map((player) => (
+                      <div key={player.tag}>
+                        <p>{player.name}</p>
+                        <Image
+                          width={65}
+                          height={65}
+                          className="bg-white w-[65px] h-[65px]"
+                          src={
+                            brawlers[player.brawler.id]
+                              ? brawlers[player.brawler.id].imageUrl
+                              : brawlers.imageUrl
+                          }
+                          alt="brawller-icon"
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <span
-                  className={`${
-                    battle.battle.teams.length - 1 === idx && "hidden"
-                  } mr-2`}
-                >
-                  vs
-                </span>
-              </div>
-            ))
-          : battle.battle.players.map((player, idx) => (
-              <div key={player.tag} className="flex">
-                <p>{player.name}</p>
-                <span
-                  className={`${
-                    battle.battle.players.length - 1 === idx && "hidden"
-                  } mr-2`}
-                >
-                  vs
-                </span>
-              </div>
-            ))}
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-5">
+              {battle.battle.players.map((player) => (
+                <div key={player.tag} className="flex">
+                  <div key={player.tag}>
+                    <p className="w-[65px] overflow-hidden inline-block text-clip">{player.name}</p>
+                    <Image
+                      width={65}
+                      height={65}
+                      className="bg-white w-[65px] h-[65px]"
+                      src={
+                        brawlers[player.brawler.id]
+                          ? brawlers[player.brawler.id].imageUrl
+                          : brawlers.imageUrl
+                      }
+                      alt="brawller-icon"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   ));

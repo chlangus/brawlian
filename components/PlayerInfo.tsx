@@ -5,9 +5,11 @@ import duoSvg from "@/lib/svg/duo.svg";
 import soloSvg from "@/lib/svg/solo.svg";
 import trophySvg from "@/lib/svg/trophy.svg";
 import Image from "next/image";
+import { useBrawlInfoContext } from "@/context/BrawlInfoContext";
 
 export default function PlayerInfo() {
   const { playerData } = usePlayerInfoContext();
+  const { icon } = useBrawlInfoContext();
   return (
     <section className="w-full mt-[30px]">
       {playerData.tag && (
@@ -19,7 +21,7 @@ export default function PlayerInfo() {
             <div className="flex gap-4 flex-shrink-0">
               <div className="mt-2 ">
                 <Image
-                  src={playerData.icon.iconImage}
+                  src={icon.player[playerData.icon.id].imageUrl}
                   alt="player-tag-image"
                   width={80}
                   height={80}
@@ -29,9 +31,7 @@ export default function PlayerInfo() {
               <div className="flex flex-col gap-3">
                 <div className="flex flex-col gap-1 flex-shrink-0 items-start">
                   <div className="flex items-end gap-2">
-                    <p className="text-lg">
-                      LV. {playerData.expLevel}
-                    </p>
+                    <p className="text-lg">LV. {playerData.expLevel}</p>
 
                     <p
                       className="text-xl mt-2"

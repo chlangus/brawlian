@@ -1,8 +1,10 @@
+import { useBrawlInfoContext } from "@/context/BrawlInfoContext";
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SearchId() {
   const { setPlayerData, setBattleData } = usePlayerInfoContext();
+  const { setIcon, setMap, setBrawlers } = useBrawlInfoContext();
   const [idValue, setIdValue] = useState<string>("");
 
   const handleSearchIdButton = async () => {
@@ -22,6 +24,18 @@ export default function SearchId() {
       setBattleData(battleLogJson.items);
     }
   };
+
+  useEffect(() => {
+    const fetchBrawlInfo = async () => {
+      const { iconJson, map, brawler } = await fetch("api/brawlInfo").then(
+        (res) => res.json()
+      );
+      setIcon(iconJson);
+      setMap(map);
+      setBrawlers(brawler);
+    };
+    fetchBrawlInfo();
+  }, [setIcon, setMap, setBrawlers]);
 
   return (
     <div className="flex gap-[17px]">
