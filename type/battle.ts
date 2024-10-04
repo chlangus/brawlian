@@ -5,7 +5,7 @@ interface Brawler {
   trophies: number;
 }
 
-interface Player {
+export interface Player {
   tag: string;
   name: string;
   brawler: Brawler;

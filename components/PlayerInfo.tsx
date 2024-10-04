@@ -35,7 +35,7 @@ export default function PlayerInfo() {
 
                     <p
                       className="text-xl mt-2"
-                      style={{ color: `#${playerData.nameColor.slice(4)}` }}
+                      style={{ color: `#${playerData.nameColor?.slice(4)}` }}
                     >
                       {playerData.name}
                     </p>

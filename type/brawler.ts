@@ -62,4 +62,5 @@ export interface Brawler {
 
 export interface Brawlers {
   [key: number]: Brawler;
+  imageUrl: string;
 }

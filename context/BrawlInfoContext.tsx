@@ -21,7 +21,7 @@ const BrawlInfoContext = createContext<{
   setIcon: () => {},
   map: {},
   setMap: () => {},
-  brawlers: {},
+  brawlers: { imageUrl: "" },
   setBrawlers: () => {},
 });
 
@@ -32,7 +32,7 @@ export const BrawlInfoContextProvider = ({
 }) => {
   const [icon, setIcon] = useState<ProfileIcons>({ player: {}, club: {} });
   const [map, setMap] = useState<MapCollection>({});
-  const [brawlers, setBrawlers] = useState<Brawlers>({});
+  const [brawlers, setBrawlers] = useState<Brawlers>({ imageUrl: "" });
   return (
     <BrawlInfoContext.Provider
       value={{ icon, setIcon, map, setMap, brawlers, setBrawlers }}
