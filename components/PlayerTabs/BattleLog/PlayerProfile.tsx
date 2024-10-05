@@ -3,11 +3,11 @@ import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { Player } from "@/type/battle";
 import Image from "next/image";
 
-export default function BattlePlayerProfile({ player }: { player: Player }) {
+export default function PlayerProfile({ player }: { player: Player }) {
   const { brawlers } = useBrawlInfoContext();
   const { setPlayerData, setBattleData } = usePlayerInfoContext();
 
-  const handleSearchIdButton = async (tag) => {
+  const handleSearchIdButton = async (tag: string) => {
     const response = await fetch("api/search", {
       method: "POST",
       headers: {
@@ -24,7 +24,6 @@ export default function BattlePlayerProfile({ player }: { player: Player }) {
       setBattleData(battleLogJson.items);
     }
   };
-  console.log(player);
   return (
     <button
       onClick={() => handleSearchIdButton(player.tag)}

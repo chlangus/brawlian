@@ -9,7 +9,6 @@ export default function PlayerBrawllerList({
   playerData: PlayerData;
 }) {
   const { brawlers } = useBrawlInfoContext();
-  console.log(brawlers);
   return (
     <div className="grid grid-cols-6 gap-x-2 bg-brawl-pale-blue">
       {playerData.brawlers.map((brawler) => (

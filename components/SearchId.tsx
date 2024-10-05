@@ -6,7 +6,6 @@ export default function SearchId() {
   const { setPlayerData, setBattleData } = usePlayerInfoContext();
   const { setIcon, setMap, setBrawlers } = useBrawlInfoContext();
   const [idValue, setIdValue] = useState<string>("");
-
   const handleSearchIdButton = async () => {
     const response = await fetch("api/search", {
       method: "POST",

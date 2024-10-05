@@ -1,10 +1,10 @@
 "use client";
 
-import { PlayerInfoProvider } from "@/context/PlayerInfoContext";
-import PlayerInfo from "../PlayerInfo";
-import SearchId from "../SearchId";
-import PlayerLog from "../PlayerOptions/PlayerLog";
 import { BrawlInfoContextProvider } from "@/context/BrawlInfoContext";
+import PlayerTabContainer from "../PlayerTabs/PlayerTabContainer";
+import { PlayerInfoProvider } from "@/context/PlayerInfoContext";
+import SearchId from "../SearchId";
+import PlayerInfo from "../PlayerInfo";
 
 export default function PlayerProviderContainer() {
   return (
@@ -12,7 +12,7 @@ export default function PlayerProviderContainer() {
       <PlayerInfoProvider>
         <SearchId />
         <PlayerInfo />
-        <PlayerLog />
+        <PlayerTabContainer />
       </PlayerInfoProvider>
     </BrawlInfoContextProvider>
   );

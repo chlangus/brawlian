@@ -3,12 +3,15 @@ interface Brawler {
   name: string;
   power: number;
   trophies: number;
+  trophyChange: number;
 }
 
 export interface Player {
+  id: number;
   tag: string;
   name: string;
   brawler: Brawler;
+  brawlers: Brawler[];
 }
 
 interface Event {
@@ -19,6 +22,8 @@ interface Event {
 }
 
 interface Battle {
+  result: string;
+  duration: number;
   mode: string;
   type: string;
   trophyChange: number;
