@@ -1,3 +1,5 @@
+"use client";
+
 import { Brawlers } from "@/type/brawler";
 import { ProfileIcons } from "@/type/icon";
 import { MapCollection } from "@/type/map";
@@ -6,6 +8,7 @@ import {
   Dispatch,
   SetStateAction,
   useContext,
+  useEffect,
   useState,
 } from "react";
 
@@ -33,6 +36,17 @@ export const BrawlInfoContextProvider = ({
   const [icon, setIcon] = useState<ProfileIcons>({ player: {}, club: {} });
   const [map, setMap] = useState<MapCollection>({});
   const [brawlers, setBrawlers] = useState<Brawlers>({ imageUrl: "" });
+  useEffect(() => {
+    const fetchBrawlInfo = async () => {
+      const { iconJson, map, brawler } = await fetch("api/brawlInfo").then(
+        (res) => res.json()
+      );
+      setIcon(iconJson);
+      setMap(map);
+      setBrawlers(brawler);
+    };
+    fetchBrawlInfo();
+  }, [setIcon, setMap, setBrawlers]);
   return (
     <BrawlInfoContext.Provider
       value={{ icon, setIcon, map, setMap, brawlers, setBrawlers }}

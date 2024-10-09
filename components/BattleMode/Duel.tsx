@@ -3,14 +3,17 @@ import BrawlerContainer from "../BrawlerContainer";
 
 export default function Duel({ battle }: { battle: BattleData }) {
   return (
-    <div className="h-full flex gap-4 justify-center items-center ">
+    <div className="h-full flex gap-4 justify-center items-center shrink-0">
       {battle.battle.players.map((player, idx) => (
         <>
-          <div key={player.id}>
-            <h2 className={`${!idx && "text-right"} `}>{player.name}</h2>
+          <div
+            key={player.id}
+            className="flex flex-col gap-2 bg-black bg-opacity-50"
+          >
+            <h2 className={`${!idx && "text-right"}`}>{player.name}</h2>
             <div className="flex gap-2">
               {player.brawlers.map((brawler) => (
-                <BrawlerContainer brawler={brawler} key={brawler.id} />
+                <BrawlerContainer brawler={brawler} key={brawler.id} isBattle />
               ))}
             </div>
           </div>

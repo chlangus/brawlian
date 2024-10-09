@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "../components/Navigation";
+import { BrawlInfoContextProvider } from "@/context/BrawlInfoContext";
+import { PlayerInfoProvider } from "@/context/PlayerInfoContext";
 
 export const metadata: Metadata = {
   title: "Brawllian",
@@ -18,8 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navigation />
-        {children}
+        <BrawlInfoContextProvider>
+          <PlayerInfoProvider>
+            <Navigation />
+            {children}
+          </PlayerInfoProvider>
+        </BrawlInfoContextProvider>
       </body>
     </html>
   );

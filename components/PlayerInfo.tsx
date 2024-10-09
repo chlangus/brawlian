@@ -1,3 +1,5 @@
+"use client";
+
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import clubSvg from "@/lib/svg/club.svg";
 import threeSvg from "@/lib/svg/3vs3.svg";
@@ -11,8 +13,8 @@ export default function PlayerInfo() {
   const { playerData } = usePlayerInfoContext();
   const { icon } = useBrawlInfoContext();
   return (
-    <section className="w-full mt-[30px]">
-      {playerData.tag && (
+    playerData.tag && (
+      <section className="w-full mt-[30px]">
         <div className="relative bg-brawl-pale-blue w-full max-w-[600px] m-auto py-4 px-8 rounded-lg shadow-2xl">
           <div className="flex gap-4 justify-between text-center">
             <h2 className="absolute font-bold text-2xl -top-5 left-9">
@@ -86,7 +88,7 @@ export default function PlayerInfo() {
             </div>
           </div>
         </div>
-      )}
-    </section>
+      </section>
+    )
   );
 }

@@ -10,6 +10,7 @@ import FiveVSFive from "@/components/BattleMode/FiveVSFive";
 import { BATTLE_MAP_ICON } from "@/consts/sizes";
 import DuoShowdown from "@/components/BattleMode/DuoShowdown";
 import SoloShowdown from "@/components/BattleMode/SoloShowdown";
+import { calculateDuelTrophy } from "@/utils/calculateDuelTrophy";
 
 const NORMAP_MAP = [
   "gemGrab",
@@ -27,8 +28,6 @@ export default function BattleLog({
 }) {
   const { map } = useBrawlInfoContext();
   const { playerData } = usePlayerInfoContext();
-  console.log(battleData);
-  console.log(map);
   return battleData?.map((battle) => (
     <div
       key={battle.battleTime}
@@ -39,16 +38,22 @@ export default function BattleLog({
         <div className="ml-2 text-lg">
           <h2>{calculateTime(battle.battleTime)}</h2>
           <div className="flex gap-[6px] items-center">
-            <Image src={trophySvg} alt="trophy-svg" />
-            <h2 className="flex gap-1">
-              {battle.battle.type.toLowerCase().includes("soloranked")
-                ? "경쟁전"
-                : battle.battle.trophyChange || 0}
-            </h2>
+            {battle.battle.type.toLowerCase().includes("soloranked") ? (
+              "경쟁전"
+            ) : (
+              <>
+                <Image src={trophySvg} alt="trophy-svg" />
+                <h2 className="flex gap-1">
+                  {battle.battle.mode === "duels"
+                    ? calculateDuelTrophy(battle.battle.players)
+                    : battle.battle.trophyChange || 0}
+                </h2>
+              </>
+            )}
           </div>
           <div className="flex items-center gap-[6px]">
             <Image
-              src={map[battle.event.id].gameMode.imageUrl}
+              src={map[battle.event.id]?.gameMode.imageUrl}
               alt="gamemode-img"
               width={12}
               height={12}
@@ -62,7 +67,7 @@ export default function BattleLog({
           alt="map-image"
           width={BATTLE_MAP_ICON.X}
           height={BATTLE_MAP_ICON.Y}
-          className={`w-[${BATTLE_MAP_ICON.X}px] h-[${BATTLE_MAP_ICON.Y}px]`}
+          className={`w-[${BATTLE_MAP_ICON.X || 190}px] h-[${BATTLE_MAP_ICON.Y || 240}px] bg-black bg-opacity-50`}
         />
       </section>
 
@@ -79,7 +84,7 @@ export default function BattleLog({
               : "text-[#D00000]"
           } bg-black bg-opacity-10`}
         >
-          {battle.event.mode.includes("Showdown") ? (
+          {battle.event.mode?.includes("Showdown") ? (
             <div className="flex items-center justify-center -mt-1 gap-2">
               {battle.event.mode.toLowerCase() === "soloshowdown"
                 ? battle.battle.players.map((player, index) =>
@@ -100,17 +105,17 @@ export default function BattleLog({
         </h2>
         {/* 대전모드별 컴포넌트 */}
         <div className="w-[560px] min-h-[200px]">
-          {battle.event.mode === "duels" && <Duel battle={battle} />}
-          {NORMAP_MAP.includes(battle.event.mode) && (
+          {battle.battle.mode === "duels" && <Duel battle={battle} />}
+          {NORMAP_MAP.includes(battle.event.mode || battle.battle.mode) && (
             <ThreeVSThree battle={battle} />
           )}
           {battle.event.mode === "soloShowdown" && (
             <SoloShowdown battle={battle} />
           )}
-          {battle.event.mode === "duoShowdown" && (
+          {battle.battle.mode === "duoShowdown" && (
             <DuoShowdown battle={battle} />
           )}
-          {battle.event.mode.includes("5V5") && <FiveVSFive battle={battle} />}
+          {battle.event.mode?.includes("5V5") && <FiveVSFive battle={battle} />}
         </div>
       </section>
     </div>

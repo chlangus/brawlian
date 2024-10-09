@@ -1,6 +1,8 @@
+"use client";
+
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useState } from "react";
-import PlayerBrawllerList from "./Brawlers/PlayerBrawllerList";
+import PlayerBrawlerList from "./Brawlers/PlayerBrawlerList";
 import BattleLog from "./BattleLog/BattleLog";
 
 type Tab = "대전 기록" | "보유 브롤러";
@@ -40,7 +42,7 @@ export default function PlayerTabContainer() {
       {tabValue === "대전 기록" ? (
         <BattleLog battleData={battleData} />
       ) : (
-        <PlayerBrawllerList playerData={playerData} />
+        <PlayerBrawlerList playerData={playerData} />
       )}
     </div>
   ) : (

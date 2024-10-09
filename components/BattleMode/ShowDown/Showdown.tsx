@@ -9,17 +9,17 @@ export default function Showdown({ player }: { player: Player }) {
   const { handleSearchIdButton } = useSearchId();
 
   return (
-    <button
-      onClick={() => handleSearchIdButton(player.tag)}
-    >
-      <p
+    <button onClick={() => handleSearchIdButton(player.tag)}>
+      <h3
         className={`inline-block w-[${BATTLE_PLAYER_ICON}px] text-ellipsis whitespace-nowrap overflow-hidden`}
       >
         {player.name}
-      </p>
+      </h3>
       <div
         className={`${
-          playerData.name === player.name ? "border-4 border-brawl-yellow -m-1" : ""
+          playerData.name === player.name
+            ? "border-4 border-brawl-yellow -m-1"
+            : ""
         } `}
       >
         <BrawlerContainer brawler={player.brawler} isBattle />

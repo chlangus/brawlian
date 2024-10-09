@@ -7,6 +7,7 @@ export default function BrawlerContainer({
   brawler,
   isBattle,
 }: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   brawler: any;
   isBattle?: boolean;
 }) {
