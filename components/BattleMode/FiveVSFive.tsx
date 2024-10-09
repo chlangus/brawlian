@@ -7,11 +7,10 @@ import BrawlerContainer from "../PlayerTabs/Brawlers/BrawlerContainer";
 export default function FiveVSFive({ battle }: { battle: BattleData }) {
   const { playerData } = usePlayerInfoContext();
   const { handleSearchIdButton } = useSearchId();
-
   return (
     <div className="flex flex-col text-center">
       {battle.battle.teams.map((team, idx) => (
-        <div key={team[0].id + team[1].id}>
+        <div key={team[0].tag + team[1].tag}>
           <div className="grid grid-cols-5 justify-items-center">
             {team.map((player) => (
               <button

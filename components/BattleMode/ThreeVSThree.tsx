@@ -11,7 +11,7 @@ export default function ThreeVSThree({ battle }: { battle: BattleData }) {
   return (
     <div className="h-full flex gap-4 justify-center items-center ">
       {battle.battle.teams.map((team, idx) => (
-        <div key={team[0].id + team[1].id} className="flex flex-shrink-0 gap-2 justify-center items-center ">
+        <div key={team[0].tag + team[1].tag} className="flex flex-shrink-0 gap-2 justify-center items-center ">
           {team.map((player) => (
             <button
               key={player.tag}

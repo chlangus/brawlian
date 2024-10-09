@@ -27,7 +27,6 @@ export default function BattleLog({
 }) {
   const { map } = useBrawlInfoContext();
   const { playerData } = usePlayerInfoContext();
-  console.log(battleData);
   return battleData?.map((battle) => (
     <div
       key={battle.battleTime}
