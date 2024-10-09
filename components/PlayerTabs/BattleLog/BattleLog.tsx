@@ -3,11 +3,12 @@ import { calculateTime } from "@/utils/timeCal";
 import Image from "next/image";
 import trophySvg from "@/lib/svg/trophy.svg";
 import { useBrawlInfoContext } from "@/context/BrawlInfoContext";
-import PlayerProfile from "./PlayerProfile";
 import Duel from "@/components/BattleMode/Duel";
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import ThreeVSThree from "@/components/BattleMode/ThreeVSThree";
 import FiveVSFive from "@/components/BattleMode/FiveVSFive";
+import BattlePlayerProfile from "./BattlePlayerProfile";
+import { BATTLE_MAP_ICON } from "@/consts/size";
 
 const NORMAP_MAP = [
   "gemGrab",
@@ -44,9 +45,9 @@ export default function BattleLog({
         <Image
           src={map[battle.event.id]?.imageUrl}
           alt="map-image"
-          width={190}
-          height={240}
-          className="w-[180px] h-[240px]"
+          width={BATTLE_MAP_ICON.X}
+          height={BATTLE_MAP_ICON.Y}
+          className={`w-[${BATTLE_MAP_ICON.X}px] h-[${BATTLE_MAP_ICON.Y}px]`}
         />
       </section>
 
@@ -92,7 +93,7 @@ export default function BattleLog({
           {battle.event.mode === "soloShowdown" && (
             <div className="grid grid-cols-5 gap-x-4 justify-items-center justify-center">
               {battle.battle.players.map((player) => (
-                <PlayerProfile key={player.tag} player={player} />
+                <BattlePlayerProfile key={player.tag} player={player} />
               ))}
             </div>
           )}
@@ -101,7 +102,7 @@ export default function BattleLog({
               {battle.battle.teams.map((team) => (
                 <div key={team[0].tag + team[1].tag} className="flex flex-col">
                   {team.map((player) => (
-                    <PlayerProfile key={player.tag} player={player} />
+                    <BattlePlayerProfile key={player.tag} player={player} />
                   ))}
                 </div>
               ))}

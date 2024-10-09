@@ -1,3 +1,4 @@
+import { BATTLE_PLAYER_ICON } from "@/consts/size";
 import { useBrawlInfoContext } from "@/context/BrawlInfoContext";
 import { BattleData } from "@/type/battle";
 import Image from "next/image";
@@ -16,8 +17,8 @@ export default function Duel({ battle }: { battle: BattleData }) {
                   <Image
                     src={brawlers[brawler.id].imageUrl}
                     alt="brawler-icon"
-                    width={75}
-                    height={75}
+                    width={BATTLE_PLAYER_ICON}
+                    height={BATTLE_PLAYER_ICON}
                   />
                   {brawler.name}
                 </div>

@@ -1,3 +1,4 @@
+import { BATTLE_PLAYER_ICON } from "@/consts/size";
 import { useBrawlInfoContext } from "@/context/BrawlInfoContext";
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useSearchId } from "@/hooks/useSearchId";
@@ -18,7 +19,9 @@ export default function ThreeVSThree({ battle }: { battle: BattleData }) {
               key={player.tag}
               onClick={() => handleSearchIdButton(player.tag)}
             >
-              <h2 className="text-center inline-block w-[75px] text-ellipsis whitespace-nowrap overflow-hidden">
+              <h2
+                className={`text-center inline-block w-[${BATTLE_PLAYER_ICON}px] text-ellipsis whitespace-nowrap overflow-hidden`}
+              >
                 {player.name}
               </h2>
               <div className="flex gap-2">
@@ -28,8 +31,8 @@ export default function ThreeVSThree({ battle }: { battle: BattleData }) {
                       brawlers[player.brawler.id]?.imageUrl || brawlers.imageUrl
                     }
                     alt="brawler-icon"
-                    width={75}
-                    height={75}
+                    width={BATTLE_PLAYER_ICON}
+                    height={BATTLE_PLAYER_ICON}
                     className={` ${
                       playerData.name === player.name
                         ? "border-4 border-brawl-yellow"
