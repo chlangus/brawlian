@@ -1,5 +1,5 @@
 import { BattleData } from "@/type/battle";
-import BrawlerContainer from "../PlayerTabs/Brawlers/BrawlerContainer";
+import BrawlerContainer from "../BrawlerContainer";
 
 export default function Duel({ battle }: { battle: BattleData }) {
   return (

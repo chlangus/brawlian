@@ -27,6 +27,8 @@ export default function BattleLog({
 }) {
   const { map } = useBrawlInfoContext();
   const { playerData } = usePlayerInfoContext();
+  console.log(battleData);
+  console.log(map);
   return battleData?.map((battle) => (
     <div
       key={battle.battleTime}
@@ -34,15 +36,27 @@ export default function BattleLog({
     >
       {/* 왼쪽 정보 */}
       <section>
-        <h2>{calculateTime(battle.battleTime)}</h2>
-        <h2 className="flex gap-1">
-          <Image src={trophySvg} alt="trophy-svg" />
-          {/* 경쟁전인지 유무에 따라 트로트부분 변경 */}
-          {battle.battle.type.toLowerCase().includes("soloranked")
-            ? "경쟁전"
-            : battle.battle.trophyChange || 0}
-        </h2>
-        <h2 className="-mt-2 -mb-[2px] ml-1">{battle.battle.mode}</h2>
+        <div className="ml-2 text-lg">
+          <h2>{calculateTime(battle.battleTime)}</h2>
+          <div className="flex gap-[6px] items-center">
+            <Image src={trophySvg} alt="trophy-svg" />
+            <h2 className="flex gap-1">
+              {battle.battle.type.toLowerCase().includes("soloranked")
+                ? "경쟁전"
+                : battle.battle.trophyChange || 0}
+            </h2>
+          </div>
+          <div className="flex items-center gap-[6px]">
+            <Image
+              src={map[battle.event.id].gameMode.imageUrl}
+              alt="gamemode-img"
+              width={12}
+              height={12}
+              className="h-4 w-4"
+            />
+            <h2>{battle.battle.mode}</h2>
+          </div>
+        </div>
         <Image
           src={map[battle.event.id]?.imageUrl}
           alt="map-image"
@@ -66,7 +80,6 @@ export default function BattleLog({
           } bg-black bg-opacity-10`}
         >
           {battle.event.mode.includes("Showdown") ? (
-            // 순위대로 정렬되어 반환
             <div className="flex items-center justify-center -mt-1 gap-2">
               {battle.event.mode.toLowerCase() === "soloshowdown"
                 ? battle.battle.players.map((player, index) =>

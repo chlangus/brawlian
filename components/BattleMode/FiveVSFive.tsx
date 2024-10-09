@@ -2,7 +2,7 @@ import { BATTLE_PLAYER_ICON } from "@/consts/sizes";
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useSearchId } from "@/hooks/useSearchId";
 import { BattleData } from "@/type/battle";
-import BrawlerContainer from "../PlayerTabs/Brawlers/BrawlerContainer";
+import BrawlerContainer from "../BrawlerContainer";
 
 export default function FiveVSFive({ battle }: { battle: BattleData }) {
   const { playerData } = usePlayerInfoContext();

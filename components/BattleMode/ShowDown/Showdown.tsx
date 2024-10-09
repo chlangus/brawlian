@@ -2,7 +2,7 @@ import { BATTLE_PLAYER_ICON } from "@/consts/sizes";
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useSearchId } from "@/hooks/useSearchId";
 import { Player } from "@/type/battle";
-import BrawlerContainer from "../../PlayerTabs/Brawlers/BrawlerContainer";
+import BrawlerContainer from "../../BrawlerContainer";
 
 export default function Showdown({ player }: { player: Player }) {
   const { playerData } = usePlayerInfoContext();
