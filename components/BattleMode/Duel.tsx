@@ -16,8 +16,8 @@ export default function Duel({ battle }: { battle: BattleData }) {
                   <Image
                     src={brawlers[brawler.id].imageUrl}
                     alt="brawler-icon"
-                    width={65}
-                    height={65}
+                    width={75}
+                    height={75}
                   />
                   {brawler.name}
                 </div>

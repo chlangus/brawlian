@@ -10,17 +10,17 @@ export default function FiveVSFive({ battle }: { battle: BattleData }) {
   const { handleSearchIdButton } = useSearchId();
 
   return (
-    <div className="h-full flex flex-col justify-center items-center">
+    <div className="flex flex-col text-center">
       {battle.battle.teams.map((team, idx) => (
         <>
-          <div className="flex gap-x-4">
+          <div className="grid grid-cols-5 gap-x-4 justify-items-center justify-center">
             {team.map((player) => (
               <button
                 key={player.tag}
                 className=""
                 onClick={() => handleSearchIdButton(player.tag)}
               >
-                <h2 className="text-center inline-block w-[67px] text-ellipsis whitespace-nowrap overflow-hidden">
+                <h2 className="text-center inline-block w-[75px] text-ellipsis whitespace-nowrap overflow-hidden">
                   {player.name}
                 </h2>
                 <div className="flex gap-2">
@@ -31,8 +31,8 @@ export default function FiveVSFive({ battle }: { battle: BattleData }) {
                         brawlers.imageUrl
                       }
                       alt="brawler-icon"
-                      width={65}
-                      height={65}
+                      width={75}
+                      height={75}
                       className={` ${
                         playerData.name === player.name
                           ? "border-4 border-brawl-yellow"

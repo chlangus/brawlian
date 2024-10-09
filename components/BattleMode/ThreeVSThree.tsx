@@ -18,7 +18,7 @@ export default function ThreeVSThree({ battle }: { battle: BattleData }) {
               key={player.tag}
               onClick={() => handleSearchIdButton(player.tag)}
             >
-              <h2 className="text-center inline-block w-[67px] text-ellipsis whitespace-nowrap overflow-hidden">
+              <h2 className="text-center inline-block w-[75px] text-ellipsis whitespace-nowrap overflow-hidden">
                 {player.name}
               </h2>
               <div className="flex gap-2">
@@ -28,8 +28,8 @@ export default function ThreeVSThree({ battle }: { battle: BattleData }) {
                       brawlers[player.brawler.id]?.imageUrl || brawlers.imageUrl
                     }
                     alt="brawler-icon"
-                    width={67}
-                    height={67}
+                    width={75}
+                    height={75}
                     className={` ${
                       playerData.name === player.name
                         ? "border-4 border-brawl-yellow"

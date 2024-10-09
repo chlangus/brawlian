@@ -12,15 +12,15 @@ export default function PlayerProfile({ player }: { player: Player }) {
   return (
     <button
       onClick={() => handleSearchIdButton(player.tag)}
-      className="w-[67px]"
+      className="w-[75px]"
     >
-      <p className="inline-block w-[67px] text-ellipsis whitespace-nowrap overflow-hidden">
+      <p className="inline-block w-[75px] text-ellipsis whitespace-nowrap overflow-hidden">
         {player.name}
       </p>
       <Image
-        width={65}
-        height={65}
-        className={`bg-white w-[65px] h-[65px] ${
+        width={75}
+        height={75}
+        className={`bg-white w-[75px] h-[75px] ${
           playerData.name === player.name ? "border-4 border-brawl-yellow" : ""
         }`}
         src={

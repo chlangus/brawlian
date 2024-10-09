@@ -13,8 +13,8 @@ export default function PlayerTabContainer() {
   };
   // 브롤러 이미지 넣기 => 전역상태로 브롤러id별 이미지 저장
   return battleData?.length ? (
-    <div className="mt-20 flex flex-col py-2 px-3 bg-brawl-more-pale-blue relative gap-6 rounded-lg drop-shadow-lg  w-[800px]">
-      <div className="flex ml-3 absolute -top-10">
+    <div className="mt-20 flex flex-col py-2 px-6 bg-brawl-more-pale-blue relative gap-6 rounded-lg drop-shadow-lg  w-[850px]">
+      <div className="flex ml-6 absolute -top-10">
         <button
           className={`${
             tabValue === "대전 기록"

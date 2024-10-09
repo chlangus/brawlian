@@ -44,14 +44,14 @@ export default function BattleLog({
         <Image
           src={map[battle.event.id]?.imageUrl}
           alt="map-image"
-          width={150}
-          height={200}
-          className="w-[150px] h-[200px]"
+          width={190}
+          height={240}
+          className="w-[180px] h-[240px]"
         />
       </section>
 
       {/* 대전기록 하나 */}
-      <section className="flex flex-col">
+      <section className="flex flex-col justify-around">
         <h2
           className={`text-center text-[40px] w-full drop-shadow-xl ${
             battle.battle.result
@@ -83,13 +83,14 @@ export default function BattleLog({
             "패배"
           )}
         </h2>
+        {/* 대전모드별 컴포넌트 */}
         <div className="w-[560px] min-h-[200px]">
           {battle.event.mode === "duels" && <Duel battle={battle} />}
           {NORMAP_MAP.includes(battle.event.mode) && (
             <ThreeVSThree battle={battle} />
           )}
           {battle.event.mode === "soloShowdown" && (
-            <div className="grid grid-cols-5 gap-x-4 justify-items-center">
+            <div className="grid grid-cols-5 gap-x-4 justify-items-center justify-center">
               {battle.battle.players.map((player) => (
                 <PlayerProfile key={player.tag} player={player} />
               ))}
@@ -98,10 +99,7 @@ export default function BattleLog({
           {battle.event.mode === "duoShowdown" && (
             <div className="grid grid-cols-5 gap-x-4 justify-items-center">
               {battle.battle.teams.map((team) => (
-                <div
-                  key={team[0].tag + team[1].tag}
-                  className="flex flex-col"
-                >
+                <div key={team[0].tag + team[1].tag} className="flex flex-col">
                   {team.map((player) => (
                     <PlayerProfile key={player.tag} player={player} />
                   ))}
