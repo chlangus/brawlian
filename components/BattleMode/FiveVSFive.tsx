@@ -1,24 +1,21 @@
-import { BATTLE_PLAYER_ICON } from "@/consts/size";
-import { useBrawlInfoContext } from "@/context/BrawlInfoContext";
+import { BATTLE_PLAYER_ICON } from "@/consts/sizes";
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useSearchId } from "@/hooks/useSearchId";
 import { BattleData } from "@/type/battle";
-import Image from "next/image";
+import BrawlerContainer from "../PlayerTabs/Brawlers/BrawlerContainer";
 
 export default function FiveVSFive({ battle }: { battle: BattleData }) {
-  const { brawlers } = useBrawlInfoContext();
   const { playerData } = usePlayerInfoContext();
   const { handleSearchIdButton } = useSearchId();
 
   return (
     <div className="flex flex-col text-center">
       {battle.battle.teams.map((team, idx) => (
-        <>
-          <div className="grid grid-cols-5 gap-x-4 justify-items-center justify-center">
+        <div key={team[0].id + team[1].id}>
+          <div className="grid grid-cols-5 justify-items-center">
             {team.map((player) => (
               <button
                 key={player.tag}
-                className=""
                 onClick={() => handleSearchIdButton(player.tag)}
               >
                 <h2
@@ -26,30 +23,21 @@ export default function FiveVSFive({ battle }: { battle: BattleData }) {
                 >
                   {player.name}
                 </h2>
-                <div className="flex gap-2">
-                  <div className="text-center">
-                    <Image
-                      src={
-                        brawlers[player.brawler.id]?.imageUrl ||
-                        brawlers.imageUrl
-                      }
-                      alt="brawler-icon"
-                      width={BATTLE_PLAYER_ICON}
-                      height={BATTLE_PLAYER_ICON}
-                      className={` ${
-                        playerData.name === player.name
-                          ? "border-4 border-brawl-yellow"
-                          : ""
-                      }
+                <div
+                  className={` ${
+                    playerData.name === player.name
+                      ? "border-4 border-brawl-yellow -m-1"
+                      : ""
+                  }
    `}
-                    />
-                  </div>
+                >
+                  <BrawlerContainer brawler={player.brawler} isBattle />
                 </div>
               </button>
             ))}
           </div>
           {!idx && <p className="text-2xl">VS</p>}
-        </>
+        </div>
       ))}
     </div>
   );

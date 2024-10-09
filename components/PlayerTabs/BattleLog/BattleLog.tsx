@@ -7,8 +7,9 @@ import Duel from "@/components/BattleMode/Duel";
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import ThreeVSThree from "@/components/BattleMode/ThreeVSThree";
 import FiveVSFive from "@/components/BattleMode/FiveVSFive";
-import BattlePlayerProfile from "./BattlePlayerProfile";
-import { BATTLE_MAP_ICON } from "@/consts/size";
+import { BATTLE_MAP_ICON } from "@/consts/sizes";
+import DuoShowdown from "@/components/BattleMode/DuoShowdown";
+import SoloShowdown from "@/components/BattleMode/SoloShowdown";
 
 const NORMAP_MAP = [
   "gemGrab",
@@ -26,6 +27,7 @@ export default function BattleLog({
 }) {
   const { map } = useBrawlInfoContext();
   const { playerData } = usePlayerInfoContext();
+  console.log(battleData);
   return battleData?.map((battle) => (
     <div
       key={battle.battleTime}
@@ -91,22 +93,10 @@ export default function BattleLog({
             <ThreeVSThree battle={battle} />
           )}
           {battle.event.mode === "soloShowdown" && (
-            <div className="grid grid-cols-5 gap-x-4 justify-items-center justify-center">
-              {battle.battle.players.map((player) => (
-                <BattlePlayerProfile key={player.tag} player={player} />
-              ))}
-            </div>
+            <SoloShowdown battle={battle} />
           )}
           {battle.event.mode === "duoShowdown" && (
-            <div className="grid grid-cols-5 gap-x-4 justify-items-center">
-              {battle.battle.teams.map((team) => (
-                <div key={team[0].tag + team[1].tag} className="flex flex-col">
-                  {team.map((player) => (
-                    <BattlePlayerProfile key={player.tag} player={player} />
-                  ))}
-                </div>
-              ))}
-            </div>
+            <DuoShowdown battle={battle} />
           )}
           {battle.event.mode.includes("5V5") && <FiveVSFive battle={battle} />}
         </div>

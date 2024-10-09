@@ -1,10 +1,7 @@
-import { BATTLE_PLAYER_ICON } from "@/consts/size";
-import { useBrawlInfoContext } from "@/context/BrawlInfoContext";
 import { BattleData } from "@/type/battle";
-import Image from "next/image";
+import BrawlerContainer from "../PlayerTabs/Brawlers/BrawlerContainer";
 
 export default function Duel({ battle }: { battle: BattleData }) {
-  const { brawlers } = useBrawlInfoContext();
   return (
     <div className="h-full flex gap-4 justify-center items-center ">
       {battle.battle.players.map((player, idx) => (
@@ -13,15 +10,7 @@ export default function Duel({ battle }: { battle: BattleData }) {
             <h2 className={`${!idx && "text-right"} `}>{player.name}</h2>
             <div className="flex gap-2">
               {player.brawlers.map((brawler) => (
-                <div key={brawler.id} className="text-center">
-                  <Image
-                    src={brawlers[brawler.id].imageUrl}
-                    alt="brawler-icon"
-                    width={BATTLE_PLAYER_ICON}
-                    height={BATTLE_PLAYER_ICON}
-                  />
-                  {brawler.name}
-                </div>
+                <BrawlerContainer brawler={brawler} key={brawler.id} />
               ))}
             </div>
           </div>
