@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 export default function Navigation() {
   const path = usePathname();
   return (
-    <div className="w-full bg-brawl-pale-blue">
+    <div className="sticky w-full bg-brawl-pale-blue top-0 z-10 opacity-80">
       <nav className="w-full max-w-[900px] m-auto shadow-md flex items-center">
         <Link href="/" className="text-4xl pb-2 px-2">
           Brawllian
