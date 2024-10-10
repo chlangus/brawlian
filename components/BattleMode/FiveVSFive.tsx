@@ -3,6 +3,7 @@ import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useSearchId } from "@/hooks/useSearchId";
 import { BattleData } from "@/type/battle";
 import BrawlerContainer from "../BrawlerContainer";
+import { scrollToTop } from "@/utils/scrollToTop";
 
 export default function FiveVSFive({ battle }: { battle: BattleData }) {
   const { playerData } = usePlayerInfoContext();
@@ -16,7 +17,10 @@ export default function FiveVSFive({ battle }: { battle: BattleData }) {
             {team.map((player) => (
               <button
                 key={player.tag}
-                onClick={() => handleSearchIdButton(player.tag)}
+                onClick={() => {
+                  handleSearchIdButton(player.tag)
+                  scrollToTop();
+                }}
               >
                 <h2
                   className={`text-center inline-block ${width} text-ellipsis whitespace-nowrap overflow-hidden`}

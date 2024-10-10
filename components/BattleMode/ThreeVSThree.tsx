@@ -3,6 +3,7 @@ import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useSearchId } from "@/hooks/useSearchId";
 import { BattleData } from "@/type/battle";
 import BrawlerContainer from "../BrawlerContainer";
+import { scrollToTop } from "@/utils/scrollToTop";
 
 export default function ThreeVSThree({ battle }: { battle: BattleData }) {
   const { playerData } = usePlayerInfoContext();
@@ -19,7 +20,12 @@ export default function ThreeVSThree({ battle }: { battle: BattleData }) {
           {team.map((player) => (
             <button
               key={player.tag}
-              onClick={() => handleSearchIdButton(player.tag)}
+              onClick={() => {
+                //검색시 로딩바 추가해줘야함
+                handleSearchIdButton(player.tag);
+                scrollToTop();
+              }}
+              className="duration-150"
             >
               <h2
                 className={`text-center inline-block ${width} text-ellipsis whitespace-nowrap overflow-hidden`}

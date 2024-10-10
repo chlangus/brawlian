@@ -3,6 +3,7 @@ import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useSearchId } from "@/hooks/useSearchId";
 import { Player } from "@/type/battle";
 import BrawlerContainer from "../../BrawlerContainer";
+import { scrollToTop } from "@/utils/scrollToTop";
 
 export default function Showdown({ player }: { player: Player }) {
   const { playerData } = usePlayerInfoContext();
@@ -10,7 +11,12 @@ export default function Showdown({ player }: { player: Player }) {
   const width = `w-[${BATTLE_PLAYER_ICON}px]`;
 
   return (
-    <button onClick={() => handleSearchIdButton(player.tag)}>
+    <button
+      onClick={() => {
+        handleSearchIdButton(player.tag);
+        scrollToTop();
+      }}
+    >
       <h3
         className={`inline-block ${width} text-ellipsis whitespace-nowrap overflow-hidden`}
       >
