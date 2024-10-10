@@ -1,3 +1,4 @@
+import { Brawler } from "@/type/brawler";
 import { MapCollection, MapData } from "@/type/map";
 import { NextResponse } from "next/server";
 import { env } from "process";
@@ -18,6 +19,7 @@ export async function GET() {
     maps.json(),
     brawlers.json(),
   ]);
+  // production에다가 key 설정해줬음
 
   // map id로 찾을 수 있게 map id를 키값으로 수정
   // 지금 이용가능한 맵만 반환
@@ -26,13 +28,14 @@ export async function GET() {
     .reduce((acc: MapCollection, map: MapData) => {
       acc[map.id] = map;
       return acc;
-    });
-
+    }, {});
   const brawler = brawlersJson.list.reduce(
-    (acc: MapCollection, map: MapData) => {
-      acc[map.id] = map;
+    (acc: Brawler[], brawler: Brawler) => {
+      acc[brawler.id] = brawler;
       return acc;
-    }
+    },
+    {}
   );
+
   return NextResponse.json({ iconJson, map, brawler });
 }

@@ -8,9 +8,9 @@ export default function Duel({ battle }: { battle: BattleData }) {
         <>
           <div
             key={player.id}
-            className="flex flex-col gap-2 bg-black bg-opacity-50"
+            className="flex flex-col gap-2 bg-black bg-opacity-50 rounded-t-lg"
           >
-            <h2 className={`${!idx && "text-right"}`}>{player.name}</h2>
+            <h2 className={`inline-block px-2 ${!idx && "text-right"}`}>{player.name}</h2>
             <div className="flex gap-2">
               {player.brawlers.map((brawler) => (
                 <BrawlerContainer brawler={brawler} key={brawler.id} isBattle />

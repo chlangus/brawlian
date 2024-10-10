@@ -19,7 +19,7 @@ export default function BrawlerContainer({
       {isBattle ? "" : <p>{brawler.name}</p>}
       <div className="relative">
         <Image
-          src={brawlers[brawler.id]?.imageUrl || brawlers.imageUrl}
+          src={brawlers[brawler.id].imageUrl}
           alt="brawler-icon"
           width={isBattle ? BATTLE_PLAYER_ICON : BRAWLER_ICON}
           height={isBattle ? BATTLE_PLAYER_ICON : BRAWLER_ICON}
@@ -28,7 +28,7 @@ export default function BrawlerContainer({
           <Image src={trophySvg} alt="trophy-icon" />
           {brawler.trophies}
         </p>
-        <p className="inline-block absolute leading-5 right-0 bottom-0 px-2 bg-black">
+        <p className="absolute leading-5 right-0 bottom-0 px-2 bg-black">
           Lv {brawler.power}
         </p>
       </div>

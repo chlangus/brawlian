@@ -7,6 +7,7 @@ import BrawlerContainer from "../BrawlerContainer";
 export default function FiveVSFive({ battle }: { battle: BattleData }) {
   const { playerData } = usePlayerInfoContext();
   const { handleSearchIdButton } = useSearchId();
+  const width = `w-[${BATTLE_PLAYER_ICON}px]`;
   return (
     <div className="flex flex-col text-center">
       {battle.battle.teams.map((team, idx) => (
@@ -18,7 +19,7 @@ export default function FiveVSFive({ battle }: { battle: BattleData }) {
                 onClick={() => handleSearchIdButton(player.tag)}
               >
                 <h2
-                  className={`text-center inline-block w-[${BATTLE_PLAYER_ICON}px] text-ellipsis whitespace-nowrap overflow-hidden`}
+                  className={`text-center inline-block ${width} text-ellipsis whitespace-nowrap overflow-hidden`}
                 >
                   {player.name}
                 </h2>

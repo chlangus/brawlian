@@ -28,6 +28,10 @@ export default function BattleLog({
 }) {
   const { map } = useBrawlInfoContext();
   const { playerData } = usePlayerInfoContext();
+  const [height, width] = [
+    `w-[${BATTLE_MAP_ICON.X || 190}px]`,
+    `h-[${BATTLE_MAP_ICON.Y || 240}px]`,
+  ];
   return battleData?.map((battle) => (
     <div
       key={battle.battleTime}
@@ -67,7 +71,7 @@ export default function BattleLog({
           alt="map-image"
           width={BATTLE_MAP_ICON.X}
           height={BATTLE_MAP_ICON.Y}
-          className={`w-[${BATTLE_MAP_ICON.X || 190}px] h-[${BATTLE_MAP_ICON.Y || 240}px] bg-black bg-opacity-50`}
+          className={`${height} ${width} bg-black bg-opacity-50`}
         />
       </section>
 
