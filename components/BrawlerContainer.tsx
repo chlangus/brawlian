@@ -14,6 +14,7 @@ export default function BrawlerContainer({
   const { brawlers } = useBrawlInfoContext();
 
   return (
+    // 컴포넌트에 따라 클릭시 다른곳으로 이동하게끔 하기 위해 link에 독립적으로 구현
     <div key={brawler.id} className={`relative ${isBattle ? "" : "p-2"}`}>
       {isBattle ? "" : <p>{brawler.name}</p>}
       <div className="relative">
