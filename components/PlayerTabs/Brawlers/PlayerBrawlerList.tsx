@@ -1,12 +1,13 @@
 import { PlayerData } from "@/type/player";
 import BrawlerContainer from "../../BrawlerContainer";
-import { handleBrawlerClick } from "@/hooks/useBrawlerClick";
+import { useModal } from "@/context/ModalContext";
 
 export default function PlayerBrawlerList({
   playerData,
 }: {
   playerData: PlayerData;
 }) {
+  const { setModalState, setBrawlerId } = useModal();
   return (
     <div className="grid grid-cols-6 gap-x-2 bg-brawl-pale-blue rounded-lg">
       {playerData.brawlers
@@ -16,7 +17,8 @@ export default function PlayerBrawlerList({
           <button
             key={brawler.id}
             onClick={() => {
-              handleBrawlerClick(brawler.id);
+              setModalState(true);
+              setBrawlerId(brawler.id);
             }}
           >
             <BrawlerContainer brawler={brawler} />

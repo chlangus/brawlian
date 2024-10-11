@@ -8,7 +8,7 @@ export default function Navigation() {
     <div className="sticky w-full bg-brawl-pale-blue top-0 z-10 bg-opacity-80">
       <nav className="w-full max-w-[900px] m-auto shadow-md flex items-center">
         <Link href="/" className="text-4xl pb-2 px-2">
-          Brawllian
+          Brawlian
         </Link>
         <div className="flex text-2xl">
           <Link

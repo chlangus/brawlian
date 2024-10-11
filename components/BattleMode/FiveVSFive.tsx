@@ -1,4 +1,3 @@
-import { BATTLE_PLAYER_ICON } from "@/consts/sizes";
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useSearchId } from "@/hooks/useSearchId";
 import { BattleData } from "@/type/battle";
@@ -8,7 +7,6 @@ import { scrollToTop } from "@/utils/scrollToTop";
 export default function FiveVSFive({ battle }: { battle: BattleData }) {
   const { playerData } = usePlayerInfoContext();
   const { handleSearchIdButton } = useSearchId();
-  const width = `w-[${BATTLE_PLAYER_ICON}px]`;
   return (
     <div className="flex flex-col text-center">
       {battle.battle.teams.map((team, idx) => (
@@ -23,7 +21,7 @@ export default function FiveVSFive({ battle }: { battle: BattleData }) {
                 }}
               >
                 <h2
-                  className={`text-center inline-block ${width} text-ellipsis whitespace-nowrap overflow-hidden`}
+                  className={`text-center inline-block w-battle-player-icon text-ellipsis whitespace-nowrap overflow-hidden`}
                 >
                   {player.name}
                 </h2>

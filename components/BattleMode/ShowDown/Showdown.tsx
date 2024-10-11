@@ -1,4 +1,3 @@
-import { BATTLE_PLAYER_ICON } from "@/consts/sizes";
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useSearchId } from "@/hooks/useSearchId";
 import { Player } from "@/type/battle";
@@ -8,7 +7,6 @@ import { scrollToTop } from "@/utils/scrollToTop";
 export default function Showdown({ player }: { player: Player }) {
   const { playerData } = usePlayerInfoContext();
   const { handleSearchIdButton } = useSearchId();
-  const width = `w-[${BATTLE_PLAYER_ICON}px]`;
 
   return (
     <button
@@ -18,14 +16,14 @@ export default function Showdown({ player }: { player: Player }) {
       }}
     >
       <h3
-        className={`inline-block ${width} text-ellipsis whitespace-nowrap overflow-hidden`}
+        className={`inline-block w-[75px] text-ellipsis whitespace-nowrap overflow-hidden`}
       >
         {player.name}
       </h3>
       <div
         className={`${
           playerData.name === player.name
-            ? "border-4 border-brawl-yellow -m-1"
+            ? "border-4 border-brawl-yellow -my-1 -ml-1"
             : ""
         } `}
       >

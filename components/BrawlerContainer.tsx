@@ -1,7 +1,6 @@
 import { useBrawlInfoContext } from "@/context/BrawlInfoContext";
 import Image from "next/image";
 import trophySvg from "@/lib/svg/trophy.svg";
-import { BATTLE_PLAYER_ICON, BRAWLER_ICON } from "@/consts/sizes";
 
 export default function BrawlerContainer({
   brawler,
@@ -15,14 +14,17 @@ export default function BrawlerContainer({
 
   return (
     // 컴포넌트에 따라 클릭시 다른곳으로 이동하게끔 하기 위해 link에 독립적으로 구현
-    <div key={brawler.id} className={`relative ${isBattle ? "" : "p-2"}`}>
+    <div
+      key={brawler.id}
+      className={`relative ${isBattle ? "w-[75px] h-[75px]" : "p-2"}`}
+    >
       {isBattle ? "" : <p>{brawler.name}</p>}
       <div className="relative">
         <Image
           src={brawlers[brawler.id].imageUrl}
           alt="brawler-icon"
-          width={isBattle ? BATTLE_PLAYER_ICON : BRAWLER_ICON}
-          height={isBattle ? BATTLE_PLAYER_ICON : BRAWLER_ICON}
+          width={isBattle ? 75 : 120}
+          height={isBattle ? 75 : 120}
         />
         <p className="flex gap-1 absolute top-0 bg-black px-[2px] ">
           <Image src={trophySvg} alt="trophy-icon" />

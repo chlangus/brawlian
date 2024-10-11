@@ -1,6 +1,6 @@
 import { BrawlInfoContextProvider } from "@/context/BrawlInfoContext";
 import { PlayerInfoProvider } from "@/context/PlayerInfoContext";
-import Navigation from "../Navigation";
+import { ModalContextProvider } from "@/context/ModalContext";
 
 export default function ProviderContainer({
   children,
@@ -8,11 +8,12 @@ export default function ProviderContainer({
   children: React.ReactNode;
 }) {
   return (
-    <BrawlInfoContextProvider>
-      <PlayerInfoProvider>
-        <Navigation />
-        {children}
-      </PlayerInfoProvider>
-    </BrawlInfoContextProvider>
+    <ModalContextProvider>
+      <BrawlInfoContextProvider>
+        <PlayerInfoProvider>
+          {children}
+        </PlayerInfoProvider>
+      </BrawlInfoContextProvider>
+    </ModalContextProvider>
   );
 }
