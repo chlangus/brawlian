@@ -18,6 +18,7 @@ export default function BrawlerList() {
             onClick={() => {
               setModalState(true);
               setBrawlerId(brawler.id);
+              document.body.style.overflow = "hidden";
             }}
             key={idx}
             className="m-auto bg-brawl-pale-blue rounded-lg px-4 pb-2"

@@ -11,7 +11,6 @@ export default function BrawlerContainer({
   isBattle?: boolean;
 }) {
   const { brawlers } = useBrawlInfoContext();
-
   return (
     // 컴포넌트에 따라 클릭시 다른곳으로 이동하게끔 하기 위해 link에 독립적으로 구현
     <div

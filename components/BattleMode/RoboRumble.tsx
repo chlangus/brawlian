@@ -1,5 +1,5 @@
 import { BattleData } from "@/type/battle";
-import Individual from "./ShowDown/Individual";
+import Individual from "./Individual/Individual";
 
 export default function RoboRumble({ battle }: { battle: BattleData }) {
   return (

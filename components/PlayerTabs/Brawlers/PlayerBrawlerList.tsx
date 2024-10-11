@@ -19,6 +19,7 @@ export default function PlayerBrawlerList({
             onClick={() => {
               setModalState(true);
               setBrawlerId(brawler.id);
+              document.body.style.overflow = "hidden";
             }}
           >
             <BrawlerContainer brawler={brawler} />

@@ -1,5 +1,5 @@
 import { BattleData } from "@/type/battle";
-import Individual from "./ShowDown/Individual";
+import Individual from "./Individual/Individual";
 
 export default function SoloShowdown({ battle }: { battle: BattleData }) {
   return (
