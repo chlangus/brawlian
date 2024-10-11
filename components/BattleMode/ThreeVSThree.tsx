@@ -1,4 +1,3 @@
-import { BATTLE_PLAYER_ICON } from "@/consts/sizes";
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useSearchId } from "@/hooks/useSearchId";
 import { BattleData } from "@/type/battle";
@@ -8,14 +7,12 @@ import { scrollToTop } from "@/utils/scrollToTop";
 export default function ThreeVSThree({ battle }: { battle: BattleData }) {
   const { playerData } = usePlayerInfoContext();
   const { handleSearchIdButton } = useSearchId();
-  const width = `w-[${BATTLE_PLAYER_ICON}px]`;
-
   return (
     <div className="h-full flex gap-4 justify-center items-center ">
       {battle.battle.teams.map((team, idx) => (
         <div
           key={team[0].tag + team[1].tag}
-          className="flex flex-shrink-0 gap-2 justify-center items-center "
+          className="flex flex-shrink-0 gap-2 justify-center items-center"
         >
           {team.map((player) => (
             <button
@@ -28,7 +25,7 @@ export default function ThreeVSThree({ battle }: { battle: BattleData }) {
               className="duration-150"
             >
               <h2
-                className={`text-center inline-block ${width} text-ellipsis whitespace-nowrap overflow-hidden`}
+                className={`text-center inline-block w-[75px] text-ellipsis whitespace-nowrap overflow-hidden`}
               >
                 {player.name}
               </h2>

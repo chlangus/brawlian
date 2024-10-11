@@ -23,12 +23,10 @@ export async function GET() {
 
   // map id로 찾을 수 있게 map id를 키값으로 수정
   // 지금 이용가능한 맵만 반환
-  const map = mapJson.list
-    .filter((item: MapData) => item.disabled === false)
-    .reduce((acc: MapCollection, map: MapData) => {
-      acc[map.id] = map;
-      return acc;
-    }, {});
+  const map = mapJson.list.reduce((acc: MapCollection, map: MapData) => {
+    acc[map.id] = map;
+    return acc;
+  }, {});
   const brawler = brawlersJson.list.reduce(
     (acc: Brawler[], brawler: Brawler) => {
       acc[brawler.id] = brawler;

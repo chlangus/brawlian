@@ -4,7 +4,7 @@ import { Player } from "@/type/battle";
 import BrawlerContainer from "../../BrawlerContainer";
 import { scrollToTop } from "@/utils/scrollToTop";
 
-export default function Showdown({ player }: { player: Player }) {
+export default function Individual({ player }: { player: Player }) {
   const { playerData } = usePlayerInfoContext();
   const { handleSearchIdButton } = useSearchId();
 

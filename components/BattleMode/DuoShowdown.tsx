@@ -1,5 +1,5 @@
 import { BattleData } from "@/type/battle";
-import Showdown from "./ShowDown/Showdown";
+import Individual from "./ShowDown/Individual";
 
 export default function DuoShowdown({ battle }: { battle: BattleData }) {
   return (
@@ -10,7 +10,7 @@ export default function DuoShowdown({ battle }: { battle: BattleData }) {
           className="flex flex-col flex-shrink-0"
         >
           {team.map((player) => (
-            <Showdown key={player.tag} player={player} />
+            <Individual key={player.tag} player={player} />
           ))}
         </div>
       ))}

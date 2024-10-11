@@ -22,6 +22,7 @@ interface Event {
 }
 
 interface Battle {
+  level: { name: string; id: number };
   result: string;
   duration: number;
   mode: string;

@@ -7,10 +7,10 @@ import Duel from "@/components/BattleMode/Duel";
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import ThreeVSThree from "@/components/BattleMode/ThreeVSThree";
 import FiveVSFive from "@/components/BattleMode/FiveVSFive";
-import { BATTLE_MAP_ICON } from "@/consts/sizes";
 import DuoShowdown from "@/components/BattleMode/DuoShowdown";
 import SoloShowdown from "@/components/BattleMode/SoloShowdown";
 import { calculateDuelTrophy } from "@/utils/calculateDuelTrophy";
+import RoboRumble from "@/components/BattleMode/RoboRumble";
 
 const NORMAP_MAP = [
   "gemGrab",
@@ -19,6 +19,7 @@ const NORMAP_MAP = [
   "heist",
   "brawlBall",
   "hotZone",
+  "wipeout"
 ];
 
 export default function BattleLog({
@@ -28,10 +29,6 @@ export default function BattleLog({
 }) {
   const { map } = useBrawlInfoContext();
   const { playerData } = usePlayerInfoContext();
-  const [height, width] = [
-    `w-[${BATTLE_MAP_ICON.X || 190}px]`,
-    `h-[${BATTLE_MAP_ICON.Y || 240}px]`,
-  ];
   return battleData?.map((battle) => (
     <div
       key={battle.battleTime}
@@ -42,7 +39,7 @@ export default function BattleLog({
         <div className="ml-2 text-lg">
           <h2>{calculateTime(battle.battleTime)}</h2>
           <div className="flex gap-[6px] items-center">
-            {battle.battle.type.toLowerCase().includes("soloranked") ? (
+            {battle.battle.type?.toLowerCase().includes("soloranked") ? (
               "경쟁전"
             ) : (
               <>
@@ -69,9 +66,9 @@ export default function BattleLog({
         <Image
           src={map[battle.event.id]?.imageUrl}
           alt="map-image"
-          width={BATTLE_MAP_ICON.X}
-          height={BATTLE_MAP_ICON.Y}
-          className={`${height} ${width} bg-black bg-opacity-50`}
+          width={190}
+          height={240}
+          className={`w-[190px] h-[240px] bg-black bg-opacity-50`}
         />
       </section>
 
@@ -109,6 +106,9 @@ export default function BattleLog({
         </h2>
         {/* 대전모드별 컴포넌트 */}
         <div className="w-[560px] min-h-[200px]">
+          {battle.battle.mode === "bossFight" && (
+            <RoboRumble battle={battle} />
+          )}
           {battle.battle.mode === "duels" && <Duel battle={battle} />}
           {NORMAP_MAP.includes(battle.event.mode || battle.battle.mode) && (
             <ThreeVSThree battle={battle} />

@@ -7,7 +7,6 @@ import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 export default function Duel({ battle }: { battle: BattleData }) {
   const { handleSearchIdButton } = useSearchId();
   const { playerData } = usePlayerInfoContext();
-
   return (
     <div className="h-full flex gap-4 justify-center items-center shrink-0">
       {battle.battle.players.map((player, idx) => (
@@ -15,7 +14,11 @@ export default function Duel({ battle }: { battle: BattleData }) {
           <button
             key={player.id}
             className={`
-              ${playerData.tag === player.tag && "border-4  border-brawl-yellow"}
+              ${
+                playerData.tag.toLowerCase() == player.tag.toLowerCase()
+                  ? "border-4 border-brawl-yellow"
+                  : ""
+              }
               ${
                 !idx && "items-end"
               } flex flex-col gap-2 bg-black bg-opacity-50 rounded-t-lg `}
