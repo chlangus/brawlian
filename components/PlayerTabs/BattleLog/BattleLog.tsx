@@ -19,7 +19,7 @@ const NORMAP_MAP = [
   "heist",
   "brawlBall",
   "hotZone",
-  "wipeout"
+  "wipeout",
 ];
 
 export default function BattleLog({
@@ -39,18 +39,18 @@ export default function BattleLog({
         <div className="ml-2 text-lg">
           <h2>{calculateTime(battle.battleTime)}</h2>
           <div className="flex gap-[6px] items-center">
-            {battle.battle.type?.toLowerCase().includes("soloranked") ? (
-              "경쟁전"
-            ) : (
-              <>
-                <Image src={trophySvg} alt="trophy-svg" />
+            <>
+              <Image src={trophySvg} alt="trophy-svg" />
+              {battle.battle.type?.toLowerCase().includes("soloranked") ? (
+                <p className="font-bold">경쟁전</p>
+              ) : (
                 <h2 className="flex gap-1">
                   {battle.battle.mode === "duels"
-                    ? calculateDuelTrophy(battle.battle.players)
+                    ? calculateDuelTrophy(playerData.tag, battle.battle.players)
                     : battle.battle.trophyChange || 0}
                 </h2>
-              </>
-            )}
+              )}
+            </>
           </div>
           <div className="flex items-center gap-[6px]">
             <Image
@@ -106,9 +106,7 @@ export default function BattleLog({
         </h2>
         {/* 대전모드별 컴포넌트 */}
         <div className="w-[560px] min-h-[200px]">
-          {battle.battle.mode === "bossFight" && (
-            <RoboRumble battle={battle} />
-          )}
+          {battle.battle.mode === "bossFight" && <RoboRumble battle={battle} />}
           {battle.battle.mode === "duels" && <Duel battle={battle} />}
           {NORMAP_MAP.includes(battle.event.mode || battle.battle.mode) && (
             <ThreeVSThree battle={battle} />
