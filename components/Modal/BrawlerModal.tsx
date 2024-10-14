@@ -3,7 +3,7 @@ import { useBrawlInfoContext } from "@/context/BrawlInfoContext";
 import { useModal } from "@/context/ModalContext";
 import Image from "next/image";
 
-export default function Modal() {
+export default function BrawlerModal() {
   const { modalState, setModalState, brawlerId } = useModal();
   const { brawlers } = useBrawlInfoContext();
   return (

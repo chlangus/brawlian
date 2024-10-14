@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ProviderContainer from "@/components/Provider/ProviderContainer";
 import Navigation from "@/components/Navigation";
-import Modal from "@/components/Modal/Modal";
+import BrawlerModal from "@/components/Modal/BrawlerModal";
 
 export const metadata: Metadata = {
   title: "Brawlian",
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ProviderContainer>
-          <Modal />
+          <BrawlerModal />
           <Navigation />
           {children}
         </ProviderContainer>

@@ -2,7 +2,7 @@
 
 import { usePlayerInfoContext } from "@/context/PlayerInfoContext";
 import { useState } from "react";
-import PlayerBrawlerList from "./Brawlers/PlayerBrawlerList";
+import PlayerBrawlerList from "./PlayerBrawler/PlayerBrawlerList";
 import BattleLog from "./BattleLog/BattleLog";
 
 type Tab = "대전 기록" | "보유 브롤러";
